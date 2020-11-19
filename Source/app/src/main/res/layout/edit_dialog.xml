@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="10"
+        android:layout_margin="2dp"
+        android:orientation="horizontal"
+        android:gravity="center" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="9"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:id="@+id/DialogTitle">
+
+        </TextView>
+
+        <ImageButton
+            android:id="@+id/CloseEditBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/cancel_icon"
+            android:background="@android:color/transparent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            ></ImageButton>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="6"
+        android:padding="10px"
+        android:layout_margin="30px"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="Ngày"
+            android:id="@+id/DateTxt"
+            android:layout_weight="3"
+            android:textSize="15dp"
+            android:paddingRight="10px"></TextView>
+
+        <TextView
+            android:id="@+id/DateEditDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textColor="@android:color/black"
+            android:layout_toRightOf="@id/DateTxt"
+            android:layout_weight="3"
+            android:textSize="15dp"
+            android:paddingLeft="10px"
+            android:hint="Chạm để chọn ngày"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="6"
+        android:padding="10px"
+        android:layout_margin="30px"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="Số tiền"
+            android:id="@+id/MoneyTxt"
+            android:layout_weight="3"
+            android:textSize="15dp"
+            android:paddingRight="10px"></TextView>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/MoneyEditDialog"
+            android:digits="0123456789"
+            android:hint="200000"
+            android:layout_weight="3"
+            android:ems="10"
+            android:textSize="15dp"></EditText>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="6"
+        android:padding="10px"
+        android:layout_margin="30px"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="Ghi chú"
+            android:id="@+id/NoteTxt"
+            android:layout_weight="3"
+            android:textSize="15dp"
+            android:paddingRight="10px"></TextView>
+
+        <EditText
+            android:id="@+id/NoteEditDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textMultiLine"
+
+            android:layout_weight="3"
+            android:textSize="15dp"
+            android:paddingLeft="10px"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lưu Thay Đổi"
+        android:background="@color/colorAccent"
+        android:padding="30px"
+        android:layout_gravity="end"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/SaveChangeBtn"></Button>
+
+
+</LinearLayout>

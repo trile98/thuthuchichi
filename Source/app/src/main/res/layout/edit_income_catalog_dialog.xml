@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="10"
+        android:layout_margin="2dp"
+        android:orientation="horizontal"
+        android:gravity="center" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="9"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:id="@+id/CatalogDialogTitle"/>
+
+
+        <ImageButton
+            android:id="@+id/CloseEditBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/cancel_icon"
+            android:background="@android:color/transparent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="6"
+        android:padding="10px"
+        android:layout_margin="30px"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="Tên danh mục"
+            android:id="@+id/CatalogNameTxt"
+            android:layout_weight="3"
+            android:textSize="15dp"
+            android:paddingRight="10px"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/CatalogNameEditDialog"
+            android:digits="0123456789"
+            android:layout_weight="3"
+            android:ems="10"
+            android:textSize="15dp"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="6"
+        android:padding="10px"
+        android:layout_margin="30px"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="Loại"
+            android:id="@+id/TypeTxt"
+            android:layout_weight="1"
+            android:textSize="15dp"
+            android:paddingRight="10px"/>
+        <Spinner
+            android:id="@+id/CatalogTypeSpinnerDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+
+            android:layout_weight="1"
+            android:textSize="15dp"
+            android:paddingLeft="10px"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:gravity="end">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Xoá"
+            android:background="#FF0303"
+            android:textColor="#FFFFFF"
+            android:layout_gravity=""
+            android:id="@+id/DeleteCatalogBtn"
+            android:layout_marginRight="40dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lưu Thay Đổi"
+            android:background="@color/colorAccent"
+            android:paddingHorizontal="30px"
+            android:layout_gravity="right"
+            android:id="@+id/SaveChangeCatalogBtn"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>

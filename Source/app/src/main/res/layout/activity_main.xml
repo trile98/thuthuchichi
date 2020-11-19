@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/bg1"
+    android:padding="16dp"
+    android:id="@+id/main_activity"
+    tools:context=".MainActivity"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/mainTitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/thuphap"
+            android:text="Thu Thu"
+            android:textColor="#000"
+            android:textSize="90px"
+            android:padding="0px" />
+
+        <TextView
+            android:id="@+id/mainTitle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/thuphap"
+            android:padding="0px"
+            android:text="Chi Chi"
+            android:textColor="#000"
+            android:textSize="90px"
+            tools:layout_editor_absoluteX="162dp"
+            tools:layout_editor_absoluteY="122dp"
+            android:layout_gravity="right"/>
+
+
+    <LinearLayout
+        android:id="@+id/layoutBtnGrp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mainTitle2"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainTitle2"
+        app:layout_constraintVertical_bias="0.235">
+
+
+        <Button
+            android:id="@+id/BtnIncome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20px"
+            android:background="@drawable/my_main_btn_income"
+            android:fontFamily="@font/banhmi"
+            android:text="Thu Nhập"
+            android:textColor="#fff"
+            android:textSize="30px"
+            android:paddingHorizontal="30dp"/>
+
+        <Button
+            android:id="@+id/BtnOutcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20px"
+            android:background="@drawable/my_main_btn_outcome"
+            android:fontFamily="@font/banhmi"
+            android:text="Chi Tiêu"
+            android:textColor="#fff"
+            android:textSize="30px"
+            android:paddingHorizontal="30dp"/>
+
+
+
+        <Button
+            android:id="@+id/BtnInOut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20px"
+            android:background="@drawable/my_main_btn_all"
+            android:fontFamily="@font/banhmi"
+            android:text="Tất cả thu chi"
+            android:textColor="#fff"
+            android:textSize="30px"/>
+
+        <ImageButton
+            android:id="@+id/MainDelBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            android:src="@drawable/baseline_delete_forever_24"
+            android:tint="#FF0000"/>
+
+    </LinearLayout>
+
+</LinearLayout>
