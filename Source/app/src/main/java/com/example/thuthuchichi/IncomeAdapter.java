@@ -64,65 +64,66 @@ public class IncomeAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         View rowView = convertView;
+        try {
+            if (rowView == null) {
+                LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                rowView = inflater.inflate(layout, null);
 
-        if (rowView == null) {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            rowView = inflater.inflate(layout, null);
+                ViewHolder viewHolder = new ViewHolder();
 
-            ViewHolder viewHolder = new ViewHolder();
+                viewHolder.mDateEdit = rowView.findViewById(R.id.DateEdit);
+                viewHolder.mMoneyEdit = rowView.findViewById(R.id.MoneyEdit);
+                viewHolder.mNoteEdit = rowView.findViewById(R.id.NoteEdit);
+                viewHolder.mCancelBtn = rowView.findViewById(R.id.CancelBtn);
+                viewHolder.mTitle = rowView.findViewById(R.id.RowTitle);
 
-            viewHolder.mDateEdit = rowView.findViewById(R.id.DateEdit);
-            viewHolder.mMoneyEdit=rowView.findViewById(R.id.MoneyEdit);
-            viewHolder.mNoteEdit = rowView.findViewById(R.id.NoteEdit);
-            viewHolder.mCancelBtn = rowView.findViewById(R.id.CancelBtn);
-            viewHolder.mTitle = rowView.findViewById(R.id.RowTitle);
-
-            rowView.setTag(viewHolder);
-        }
-
+                rowView.setTag(viewHolder);
+            }
 
 
 //        fill data
-        final ViewHolder holder = (ViewHolder) rowView.getTag();
-        Income inc = listIncome.get(position);
+            final ViewHolder holder = (ViewHolder) rowView.getTag();
+            Income inc = listIncome.get(position);
 
-        holder.mDateEdit.setInputType(InputType.TYPE_NULL);
+            holder.mDateEdit.setInputType(InputType.TYPE_NULL);
 
-        int displayPos = position+1;
+            int displayPos = position + 1;
 
-        holder.mDateEdit.setText(inc.getDate());
-        holder.mMoneyEdit.setText(inc.getMoney()+"");
-        holder.mNoteEdit.setText(inc.getNote());
+            holder.mDateEdit.setText(inc.getDate());
+            holder.mMoneyEdit.setText(inc.getMoney() + "");
+            holder.mNoteEdit.setText(inc.getNote());
 
-        holder.mTitle.setText("Dữ Liệu "+displayPos);
+            holder.mTitle.setText("Dữ Liệu " + displayPos);
 
-        holder.mCancelBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    if (listIncome.size() > 1) {
-                        listIncome.remove(position);
-                        notifyDataSetChanged();
-                    } else {
-                        Toast.makeText(context, "Giữ lại ít nhất một khung", Toast.LENGTH_LONG).show();
+            holder.mCancelBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    try {
+                        if (listIncome.size() > 1) {
+                            listIncome.remove(position);
+                            notifyDataSetChanged();
+                        } else {
+                            Toast.makeText(context, "Giữ lại ít nhất một khung", Toast.LENGTH_LONG).show();
+                        }
+                    } catch (Exception e) {
+                        Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
                     }
                 }
-                catch (Exception e){
-                    Toast.makeText(context,e.toString(),Toast.LENGTH_LONG).show();
+            });
+
+            holder.mDateEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    pickADate(holder.mDateEdit);
+
                 }
-            }
-        });
+            });
 
-        holder.mDateEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pickADate(holder.mDateEdit);
-
-            }
-        });
-
-        UpdateValueAfterTextChange(holder,position);
-
+            UpdateValueAfterTextChange(holder, position);
+        }
+        catch (Exception e){
+            Toast.makeText(context,e.toString(),Toast.LENGTH_LONG).show();
+        }
         return rowView;
     }
 
@@ -143,7 +144,8 @@ public class IncomeAdapter extends BaseAdapter {
             public void afterTextChanged(Editable s) {
                 String c = h.mDateEdit.getText().toString();
                 if(!c.equals(""))
-                    listIncome.get(pos).setDate(h.mDateEdit.getText().toString());
+                    if(pos<listIncome.size())
+                        listIncome.get(pos).setDate(h.mDateEdit.getText().toString());
                 else
                     h.mDateEdit.setError("Chọn ngày");
             }

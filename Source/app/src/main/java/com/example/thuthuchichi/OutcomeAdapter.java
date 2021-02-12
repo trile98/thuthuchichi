@@ -62,63 +62,67 @@ public class OutcomeAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         View rowView = convertView;
+        try {
 
-        if (rowView == null) {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            rowView = inflater.inflate(layout, null);
 
-            ViewHolder viewHolder = new ViewHolder();
+            if (rowView == null) {
+                LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                rowView = inflater.inflate(layout, null);
 
-            viewHolder.mDateEdit = rowView.findViewById(R.id.DateEdit);
-            viewHolder.mMoneyEdit=rowView.findViewById(R.id.MoneyEdit);
-            viewHolder.mNoteEdit = rowView.findViewById(R.id.NoteEdit);
-            viewHolder.mCancelBtn = rowView.findViewById(R.id.CancelBtn);
-            viewHolder.mTitle = rowView.findViewById(R.id.RowTitle);
+                ViewHolder viewHolder = new ViewHolder();
 
-            rowView.setTag(viewHolder);
-        }
+                viewHolder.mDateEdit = rowView.findViewById(R.id.DateEdit);
+                viewHolder.mMoneyEdit = rowView.findViewById(R.id.MoneyEdit);
+                viewHolder.mNoteEdit = rowView.findViewById(R.id.NoteEdit);
+                viewHolder.mCancelBtn = rowView.findViewById(R.id.CancelBtn);
+                viewHolder.mTitle = rowView.findViewById(R.id.RowTitle);
 
+                rowView.setTag(viewHolder);
+            }
 
 
 //        fill data
-        final ViewHolder holder = (ViewHolder) rowView.getTag();
-        Outcome inc = listOutcome.get(position);
+            final ViewHolder holder = (ViewHolder) rowView.getTag();
+            Outcome inc = listOutcome.get(position);
 
-        holder.mDateEdit.setInputType(InputType.TYPE_NULL);
+            holder.mDateEdit.setInputType(InputType.TYPE_NULL);
 
-        int displayPos = position+1;
+            int displayPos = position + 1;
 
-        holder.mDateEdit.setText(inc.getDate());
-        holder.mMoneyEdit.setText(inc.getMoney()+"");
-        holder.mNoteEdit.setText(inc.getNote());
+            holder.mDateEdit.setText(inc.getDate());
+            holder.mMoneyEdit.setText(inc.getMoney() + "");
+            holder.mNoteEdit.setText(inc.getNote());
 
-        holder.mTitle.setText("Dữ Liệu "+displayPos);
+            holder.mTitle.setText("Dữ Liệu " + displayPos);
 
-        holder.mCancelBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(listOutcome.size()>1){
-                    listOutcome.remove(position);
-                    notifyDataSetChanged();
+            holder.mCancelBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listOutcome.size() > 1) {
+                        listOutcome.remove(position);
+                        notifyDataSetChanged();
+                    } else {
+                        Toast.makeText(context, "Giữ lại ít nhất một khung", Toast.LENGTH_LONG).show();
+                    }
                 }
-                else{
-                    Toast.makeText(context,"Giữ lại ít nhất một khung",Toast.LENGTH_LONG).show();
+            });
+
+
+            holder.mDateEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    pickADate(holder.mDateEdit);
+
                 }
-            }
-        });
+            });
+
+            UpdateValueAfterTextChange(holder, position);
 
 
-
-        holder.mDateEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pickADate(holder.mDateEdit);
-
-            }
-        });
-
-        UpdateValueAfterTextChange(holder,position);
-
+        }
+        catch (Exception e){
+            Toast.makeText(context,e.toString(),Toast.LENGTH_LONG).show();
+        }
         return rowView;
     }
 
@@ -137,19 +141,15 @@ public class OutcomeAdapter extends BaseAdapter {
 
             @Override
             public void afterTextChanged(Editable s) {
-                try {
+
                     String c = h.mDateEdit.getText().toString();
                     if (!c.equals("")) {
-                        if(listOutcome.contains(pos)) {
+                        if(pos<listOutcome.size()) {
                             listOutcome.get(pos).setDate(h.mDateEdit.getText().toString());
                         }
                     }
                     else
                         h.mDateEdit.setError("Chọn ngày");
-                }
-                catch (Exception e){
-                    Toast.makeText(context,e.toString(),Toast.LENGTH_LONG).show();
-                }
             }
         });
 
