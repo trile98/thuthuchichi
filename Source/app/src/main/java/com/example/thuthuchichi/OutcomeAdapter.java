@@ -137,11 +137,19 @@ public class OutcomeAdapter extends BaseAdapter {
 
             @Override
             public void afterTextChanged(Editable s) {
-                String c = h.mDateEdit.getText().toString();
-                if(!c.equals(""))
-                    listOutcome.get(pos).setDate(h.mDateEdit.getText().toString());
-                else
-                    h.mDateEdit.setError("Chọn ngày");
+                try {
+                    String c = h.mDateEdit.getText().toString();
+                    if (!c.equals("")) {
+                        if(listOutcome.contains(pos)) {
+                            listOutcome.get(pos).setDate(h.mDateEdit.getText().toString());
+                        }
+                    }
+                    else
+                        h.mDateEdit.setError("Chọn ngày");
+                }
+                catch (Exception e){
+                    Toast.makeText(context,e.toString(),Toast.LENGTH_LONG).show();
+                }
             }
         });
 

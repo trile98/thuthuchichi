@@ -99,12 +99,16 @@ public class IncomeAdapter extends BaseAdapter {
         holder.mCancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(listIncome.size()>1){
-                    listIncome.remove(position);
-                    notifyDataSetChanged();
+                try {
+                    if (listIncome.size() > 1) {
+                        listIncome.remove(position);
+                        notifyDataSetChanged();
+                    } else {
+                        Toast.makeText(context, "Giữ lại ít nhất một khung", Toast.LENGTH_LONG).show();
+                    }
                 }
-                else{
-                    Toast.makeText(context,"Giữ lại ít nhất một khung",Toast.LENGTH_LONG).show();
+                catch (Exception e){
+                    Toast.makeText(context,e.toString(),Toast.LENGTH_LONG).show();
                 }
             }
         });
