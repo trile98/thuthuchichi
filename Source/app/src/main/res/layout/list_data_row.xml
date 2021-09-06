@@ -18,7 +18,7 @@
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="1"></View>
+            android:layout_weight="1"/>
 
         <CheckBox
             android:scaleY="1.5"
@@ -27,12 +27,24 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
             android:id="@+id/dataRowCheck"
-            android:layout_weight="1"></CheckBox>
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:padding="10px"
+            android:layout_margin="10px"
+            android:layout_weight="1"
+            android:id="@+id/RowId"
+            android:textColor="@android:color/black"
+            android:textStyle="italic"
+            android:text="1"/>
 
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="6"></View>
+            android:layout_weight="5"/>
 
         <ImageButton
             android:layout_weight="1"
@@ -41,7 +53,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/edit"
             android:layout_marginRight="10px"
-            android:backgroundTint="@android:color/transparent"></ImageButton>
+            android:backgroundTint="@android:color/transparent"/>
 
         <ImageButton
             android:layout_weight="1"
@@ -49,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/delete"
-            android:backgroundTint="@android:color/transparent"></ImageButton>
+            android:backgroundTint="@android:color/transparent"/>
 
     </LinearLayout>
 
@@ -57,26 +69,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20px">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="80dp"
-            android:textStyle="bold"
-            android:padding="10px"
-            android:layout_margin="10px"
-            android:id="@+id/RowId"
-            android:textColor="@android:color/black"
-            android:text="1"></TextView>
+
 
         <TextView
             android:text="30000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/RowId"
             android:layout_marginLeft="10dp"
             android:textSize="60px"
             android:id="@+id/RowMoney"
-            android:textColor="@android:color/holo_red_dark"></TextView>
+            android:textColor="@android:color/holo_red_dark"/>
 
 
 
@@ -84,12 +86,11 @@
             android:text="22222"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/RowId"
             android:layout_marginLeft="10dp"
             android:textSize="40px"
             android:id="@+id/RowDate"
             android:layout_below="@id/RowMoney"
-            android:layout_marginTop="20px"></TextView>
+            android:layout_marginTop="20px"/>
 
         <View
             android:id="@+id/dividerView"
@@ -97,14 +98,12 @@
             android:layout_height="1dp"
             android:layout_below="@+id/RowDate"
             android:background="@android:color/black"
-            android:layout_toRightOf="@id/RowId"
             android:layout_marginTop="10px"
             android:layout_marginBottom="10px"/>
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/RowId"
             android:layout_marginLeft="10dp"
             android:textSize="35px"
             android:padding="15px"
@@ -113,7 +112,7 @@
             android:layout_below="@id/RowDate"
             android:inputType="textMultiLine"
             android:layout_marginTop="20px"
-            android:textStyle="italic"></TextView>
+            android:textStyle="italic"/>
     </RelativeLayout>
 
 

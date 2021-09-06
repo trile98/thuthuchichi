@@ -20,6 +20,9 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView.*;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -119,6 +122,13 @@ public class IncomeAdapter extends BaseAdapter {
                 }
             });
 
+//            holder.mMoneyEdit.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    holder.mMoneyEdit.setText(holder.mMoneyEdit.getText().toString().replace(",",""));
+//                }
+//            });
+
             UpdateValueAfterTextChange(holder, position);
         }
         catch (Exception e){
@@ -128,6 +138,8 @@ public class IncomeAdapter extends BaseAdapter {
     }
 
     void UpdateValueAfterTextChange(final ViewHolder h, final int pos){
+        final NumberFormat formatter = new DecimalFormat("###,###.##");
+
 
         h.mDateEdit.addTextChangedListener(new TextWatcher() {
             @Override
@@ -143,9 +155,10 @@ public class IncomeAdapter extends BaseAdapter {
             @Override
             public void afterTextChanged(Editable s) {
                 String c = h.mDateEdit.getText().toString();
-                if(!c.equals(""))
-                    if(pos<listIncome.size())
+                if(!c.equals("")) {
+                    if (pos < listIncome.size())
                         listIncome.get(pos).setDate(h.mDateEdit.getText().toString());
+                }
                 else
                     h.mDateEdit.setError("Chọn ngày");
             }
@@ -156,12 +169,18 @@ public class IncomeAdapter extends BaseAdapter {
             public void onFocusChange(View v, boolean hasFocus) {
                 if(!hasFocus){
                     EditText content = (EditText) v;
+
                     String c = content.getText().toString();
-                    if(c.matches(regexStr) && !c.equals(""))
-                        listIncome.get(pos).setMoney(Integer.valueOf(content.getText().toString()));
+                    if(c.matches(regexStr) && !c.equals("")) {
+                        listIncome.get(pos).setMoney(Integer.valueOf(c));
+//                        ((EditText) v).setText(formatter.format(Integer.parseInt(c.replace(",",""))));
+                    }
                     else
                         h.mMoneyEdit.setError("Nhập số tiền");
                 }
+//                else {
+//                    ((EditText)v).setText(((EditText) v).getText().toString().replace(",",""));
+//                }
             }
         });
 
