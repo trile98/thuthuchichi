@@ -13,7 +13,7 @@ Add new button is in income list screen and outgo list screen. It will direct to
 
 <img src="https://github.com/trile98/thuthuchichi/blob/main/screenshot/addnew.jpg"  height="400" />
 
-In List screeen, we can filter by records' note and get total of some records.
+In List screen, we can filter by records' note and get total of some records.
 
 <img src="https://github.com/trile98/thuthuchichi/blob/main/screenshot/filter.jpg"  height="400" /> <img src="https://github.com/trile98/thuthuchichi/blob/main/screenshot/total.jpg"  height="400" />
 
